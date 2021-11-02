@@ -17,13 +17,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "io.expo.restroom",
+      "config": {
+        "googleMapsApiKey": "AIzaSyAm23sJcn7EuK-maawqFysYe0RrMsagawo"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey":  "AIzaSyAm23sJcn7EuK-maawqFysYe0RrMsagawo"
+        }
+      },
+      "package": "io.expo.restroom"
     },
     "web": {
       "favicon": "./assets/favicon.png"
