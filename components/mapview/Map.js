@@ -33,7 +33,49 @@ class Map extends Component {
             }
         ]
     }
+
+    /**
+     * Future code to get the geolocation of the user, saving for next iteration
+     */
+    // onRelocate = () => {
+    //     navigator.geolocation.getCurrentPosition(
+    //           position => {
+    //             Toast.loading("...", 2);
+    //             let region = {
+    //               latitude: position.coords.latitude,
+    //               longitude: position.coords.longitude
+    //             };
+    //             this.map.animateToRegion(region)
+    //     }
+
+    /**
+     * Function to be called to add marker to the map
+     * Will be called in a loop from ComponentDidMount
+     * 
+     * @param {*} coordinate - An object containing latitude and longitudinal coordinates
+     * @param {*} title - A string title describing the marker
+     * @param {*} description - A string description of the marker.
+     */
+    addMarker = (coordinate, title, description) => {
+        
+        const newMarker = {
+            coordinate: coordinate,
+            title: title,
+            description: description
+        }
+        const newMarkers = [...this.state.markers, newMarker]
+        this.setState({markers: newMarkers})
+    }
+
+    /**
+     * 
+     * @param {*} region - Mutator to change the region of the MapView component
+     */
+    onRegionChange = (region) => {
+        this.setState({region: region})
+    }
     
+    //Where things are actually shown on screen
     render () {
         return (
             <MapView
@@ -42,7 +84,7 @@ class Map extends Component {
             provider = {PROVIDER_GOOGLE}
             showsUserLocation = {true}
             >
-                {/* Show all Markers */}
+                {/* Show all Markers using map() */}
                 {this.state.markers.map((markers, index) => {
                         return <Marker
                         key = {index}
