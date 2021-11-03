@@ -1,9 +1,10 @@
 import React, {useState, Component} from 'react';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
-import { Image, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import icon from './icons/toilet.png'
-class Map extends Component {
+import * as Location from 'expo-location';
 
+class Map extends Component {
     state = {
         // Madison Wisconsin starting region
         region: {
@@ -34,19 +35,8 @@ class Map extends Component {
         ]
     }
 
-    /**
-     * Future code to get the geolocation of the user, saving for next iteration
-     */
-    // onRelocate = () => {
-    //     navigator.geolocation.getCurrentPosition(
-    //           position => {
-    //             Toast.loading("...", 2);
-    //             let region = {
-    //               latitude: position.coords.latitude,
-    //               longitude: position.coords.longitude
-    //             };
-    //             this.map.animateToRegion(region)
-    //     }
+
+    
 
     /**
      * Function to be called to add marker to the map
@@ -74,6 +64,29 @@ class Map extends Component {
     onRegionChange = (region) => {
         this.setState({region: region})
     }
+
+    /**
+     * Will prompt the user for permission to view their location
+     * Will then set the region of the map to their location.
+     */
+    componentDidMount() {
+       (async () => {
+           let {status} = await Location.requestForegroundPermissionsAsync();
+           
+           if (status !== 'granted') {
+               return
+           }
+           let location = await Location.getCurrentPositionAsync()
+           const newRegion = {
+               latitude: location.coords.latitude,
+               longitude: location.coords.longitude,
+               latitudeDelta: 0.0922,
+               longitudeDelta: 0.0421
+           }
+           this.onRegionChange(newRegion)
+       })();
+    }
+
     
     //Where things are actually shown on screen
     render () {
