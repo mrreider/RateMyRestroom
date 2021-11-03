@@ -50,7 +50,7 @@ class Map extends Component {
                         title = {markers.title}
                         description = {markers.description}
                         style = {styles.marker}
-                        // image = {{uri: Image.resolveAssetSource(icon).uri}}
+                        image = {{uri: Image.resolveAssetSource(icon).uri}}
                         />
                 })}
             </MapView>
