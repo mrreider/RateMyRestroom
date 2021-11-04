@@ -15,7 +15,7 @@ class Map extends Component {
         },
         markers: [
             {
-                latlng: {
+                latlng: { // AKA coordinate
                     latitude: 43.0708751485606,
                     longitude:  -89.3986430824941
                 },
@@ -58,7 +58,8 @@ class Map extends Component {
     }
 
     /**
-     * 
+     * Given a region, changes the state to alter the location the 
+     * map is currently viewing
      * @param {*} region - Mutator to change the region of the MapView component
      */
     onRegionChange = (region) => {
@@ -66,16 +67,18 @@ class Map extends Component {
     }
 
     /**
-     * Will prompt the user for permission to view their location
+     * Will prompt the user for permission to fetch their location
      * Will then set the region of the map to their location.
      */
     componentDidMount() {
        (async () => {
+           // Request Permission
            let {status} = await Location.requestForegroundPermissionsAsync();
            
            if (status !== 'granted') {
                return
            }
+           // Get location
            let location = await Location.getCurrentPositionAsync()
            const newRegion = {
                latitude: location.coords.latitude,
@@ -114,10 +117,10 @@ class Map extends Component {
     }
   };
 
-
+// Style for the map
 const styles = StyleSheet.create({
     container: {
-      ...StyleSheet.absoluteFillObject,
+      ...StyleSheet.absoluteFillObject, // Fill screen
       flex: 1
     },
     marker: {

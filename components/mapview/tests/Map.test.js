@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import {shallow, configure} from 'enzyme'
 import toJson from 'enzyme-to-json'
 
-// Right now 
+// This configures jest to be able to work with enzyme
 configure({adapter: new Adapter()})
 // STATE TEST
 
