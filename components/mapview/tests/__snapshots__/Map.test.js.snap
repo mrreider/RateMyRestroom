@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match the previous snapshot 1`] = `
+<MapView
+  provider="google"
+  region={
+    Object {
+      "latitude": 43.07470053372165,
+      "latitudeDelta": 0.0922,
+      "longitude": -89.38453472496299,
+      "longitudeDelta": 0.0421,
+    }
+  }
+  showsUserLocation={true}
+  style={
+    Object {
+      "bottom": 0,
+      "flex": 1,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 43.0708751485606,
+        "longitude": -89.3986430824941,
+      }
+    }
+    description="Pretty nice bathrooms"
+    image={1}
+    key="0"
+    stopPropagation={false}
+    style={
+      Object {
+        "height": 50,
+        "width": 20,
+      }
+    }
+    title="Nicholas Recreation Center"
+  />
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 37.78825,
+        "latitudeDelta": 0.0922,
+        "longitude": -122.4324,
+        "longitudeDelta": 0.0421,
+      }
+    }
+    description="a test marker"
+    image={1}
+    key="1"
+    stopPropagation={false}
+    style={
+      Object {
+        "height": 50,
+        "width": 20,
+      }
+    }
+    title="test"
+  />
+</MapView>
+`;
+
+exports[`Snapshot test 1`] = `
+<MapView
+  provider="google"
+  region={
+    Object {
+      "latitude": 43.07470053372165,
+      "latitudeDelta": 0.0922,
+      "longitude": -89.38453472496299,
+      "longitudeDelta": 0.0421,
+    }
+  }
+  showsUserLocation={true}
+  style={
+    Object {
+      "bottom": 0,
+      "flex": 1,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 43.0708751485606,
+        "longitude": -89.3986430824941,
+      }
+    }
+    description="Pretty nice bathrooms"
+    image={1}
+    key="0"
+    stopPropagation={false}
+    style={
+      Object {
+        "height": 50,
+        "width": 20,
+      }
+    }
+    title="Nicholas Recreation Center"
+  />
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 37.78825,
+        "latitudeDelta": 0.0922,
+        "longitude": -122.4324,
+        "longitudeDelta": 0.0421,
+      }
+    }
+    description="a test marker"
+    image={1}
+    key="1"
+    stopPropagation={false}
+    style={
+      Object {
+        "height": 50,
+        "width": 20,
+      }
+    }
+    title="test"
+  />
+</MapView>
+`;

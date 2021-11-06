@@ -14,3 +14,7 @@ web-build/
 
 # macOS
 .DS_Store
+
+# Jest snapshots
+__snapshots__
+*.snap
