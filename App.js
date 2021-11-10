@@ -2,29 +2,39 @@ import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Map from './components/mapview/Map';
-import MapView from 'react-native-maps'
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Welcome from './components/Welcome/Welcome';
+import SignUp from './components/SignUp/SignUp';
+import SignIn from './components/SignIn/SignIn';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
-class App extends Component {
+const Stack = createStackNavigator();
 
-  render(){
-    return (
-      <View style={styles.container}>
+export default function App() {
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name = 'Welcome' component= {Welcome} options = {{headerShown: false}}/>
+        <Stack.Screen name = 'Sign Up' component = {SignUp} options = {{headerShown: false}}/>
+        <Stack.Screen name = 'Sign In' component = {SignIn} options = {{headerShown: false}}/>
+        <Stack.Screen name= {'Loading'} component={LoadingScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name= 'Map' component={Map} options={{ headerShown: false }}/>
+        {/* <View style={styles.container}>
         <Text>Open up App.js to start working on your app</Text>
         <StatusBar style="auto" />
-        <Map/>
-      </View>
-    );
-  }
-  
+        <Map/> */}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default App
