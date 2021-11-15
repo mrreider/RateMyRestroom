@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import Map from './components/mapview/Map';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,7 +11,6 @@ import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import Dashboard from './components/Dashboard/dashboard';
 
 const Stack = createStackNavigator();
-
 export default function App() {
 
   const styles = StyleSheet.create({
@@ -24,6 +23,7 @@ export default function App() {
   });
 
   return (
+    
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name = 'Welcome' component= {Welcome} options = {{headerShown: false}}/>

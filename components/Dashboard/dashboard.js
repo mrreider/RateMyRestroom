@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Alert} from 'react-native';
+import { View, Text, StyleSheet, Alert, Button} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {doc, getFirestore, getDoc} from "firebase/firestore";
 import { getApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
+import { loggingOut } from '../../apis/api';
 
 
 export default function Dashboard({ navigation }) {
@@ -57,7 +58,11 @@ export default function Dashboard({ navigation }) {
 
   const handlePress = () => {
     loggingOut();
-    navigation.replace('Home');
+    navigation.replace('Welcome');
+  };
+
+  const handleGoToMap = () => {
+    navigation.replace('Map')
   };
 
   return (
@@ -66,6 +71,9 @@ export default function Dashboard({ navigation }) {
       <Text style={styles.text}>Hi {firstName}</Text>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Log Out</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleGoToMap}>
+        <Text style={styles.buttonText}>Go To Map</Text>
       </TouchableOpacity>
     </View>
   )
