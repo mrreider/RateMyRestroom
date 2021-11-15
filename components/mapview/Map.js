@@ -68,58 +68,63 @@ export default function Map({navigation}) {
      * Will then set the region of the map to their location.
      */
 
-    useEffect(() => {
-        async function getUserLocation() {
-            let {status} = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                return
-            }
-            let location = await Location.getCurrentPositionAsync()
-            const newRegion = {
-               latitude: location.coords.latitude,
-               longitude: location.coords.longitude,
-               latitudeDelta: 0.0922,
-               longitudeDelta: 0.0421
-           }
-           setRegion(newRegion)
-        }
+    // useEffect(() => {
+    //     async function getUserLocation() {
+    //         let {status} = await Location.requestForegroundPermissionsAsync();
+    //         if (status !== 'granted') {
+    //             return
+    //         }
+    //         let location = await Location.getCurrentPositionAsync()
+    //         const newRegion = {
+    //            latitude: location.coords.latitude,
+    //            longitude: location.coords.longitude,
+    //            latitudeDelta: 0.0922,
+    //            longitudeDelta: 0.0421
+    //        }
+    //        setRegion(newRegion)
+    //     }
 
-        getUserLocation()
-    })
+    //     getUserLocation()
+    // })
     
 // Style for the map
 const styles = StyleSheet.create({
     container: {
-        ...StyleSheet.absoluteFillObject,
-        flex: 1
+        flex: 1,
+        // justifyContent: 'center',
+        // alignItems: 'center',
     },
-    marker: {
-        height:50,
-        width: 20
+    map: {
+        flex: 1
     }
   });
+
     
     //Where things are actually shown on screen
         return (
-            <MapView
-            style = {styles.container}
-            region= {region}
-            provider = {PROVIDER_GOOGLE}
-            showsUserLocation = {true}
-            >
-                {/* Show all Markers using map() */}
-                {markers.map((markers, index) => {
-                        return <Marker
-                        key = {index}
-                        coordinate = {markers.latlng}
-                        title = {markers.title}
-                        description = {markers.description}
-                        style = {styles.marker}
-                        // image = {{uri: Image.resolveAssetSource(icon).uri}}
-                        image = {require('./icons/toilet.png')}
-                        />
+            <View style = {styles.container}>
+                <MapView
+                    style = {styles.map}
+                    region= {region}
+                    provider = {PROVIDER_GOOGLE}
+                    showsUserLocation = {true}
+                >
+                    {/* Show all Markers using map() */}
+                    {markers.map((markers, index) => {
+                            return <Marker
+                            key = {index}
+                            coordinate = {markers.latlng}
+                            title = {markers.title}
+                            description = {markers.description}
+                            style = {styles.marker}
+                            // image = {{uri: Image.resolveAssetSource(icon).uri}}
+                            image = {require('./icons/toilet.png')}
+                            />
                 })}
-            </MapView>
+                </MapView>
+                
+            </View>
+            
         );
 
 }

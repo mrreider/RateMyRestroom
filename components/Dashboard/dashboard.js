@@ -62,7 +62,7 @@ export default function Dashboard({ navigation }) {
   };
 
   const handleGoToMap = () => {
-    navigation.replace('Map')
+    navigation.navigate('Map')
   };
 
   return (
