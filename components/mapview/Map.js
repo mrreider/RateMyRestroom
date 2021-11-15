@@ -5,6 +5,7 @@ import icon from './icons/toilet.png'
 import * as Location from 'expo-location';
 import {useNavigation} from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { getCoordsFromAddress } from '../../apis/api';
 
 export default function Map({navigation}) {
 
@@ -94,11 +95,26 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         // alignItems: 'center',
     },
+    footer: {
+        margin: 10,
+        marginBottom: 37
+    },
+    backText: {
+        fontSize: 20,
+        textAlign: 'center',
+    },
     map: {
         flex: 1
     }
   });
 
+  const handleBack = () => {
+      navigation.replace('Dashboard')
+  }
+
+  const test = () => {
+    getCoordsFromAddress("turkey")
+  }
     
     //Where things are actually shown on screen
         return (
@@ -116,12 +132,21 @@ const styles = StyleSheet.create({
                             coordinate = {markers.latlng}
                             title = {markers.title}
                             description = {markers.description}
-                            style = {styles.marker}
                             // image = {{uri: Image.resolveAssetSource(icon).uri}}
                             image = {require('./icons/toilet.png')}
                             />
                 })}
                 </MapView>
+                <View style = {styles.footer}>
+                    <TouchableOpacity onPress = {handleBack}>
+                        <Text style = {styles.backText}>Dashboard</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress = {test}>
+                        <Text style = {styles.backText}>Dashboard</Text>
+                    </TouchableOpacity>
+                </View>
+                
+                
                 
             </View>
             
