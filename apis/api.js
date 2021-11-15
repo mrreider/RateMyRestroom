@@ -1,13 +1,13 @@
 import {getFirestore, setDoc, doc} from "firebase/firestore";
 import { getApp } from "firebase/app";
-import {getAuth, onAuthStateChanged, signInWithCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import {Alert} from "react-native";
 import {initializeApp} from 'firebase/app';
 import apiKeys from '../config/keys'
 
 
 initializeApp(apiKeys.firebaseConfig);
-const app = getApp()
+export const app = getApp()
 const auth = getAuth(app)
 const firestore = getFirestore(app)
 
