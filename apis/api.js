@@ -4,20 +4,28 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sig
 import {Alert} from "react-native";
 import {initializeApp} from 'firebase/app';
 import apiKeys from '../config/keys'
-import * as Location from 'expo-location'
 
 
 initializeApp(apiKeys.firebaseConfig);
 export const app = getApp()
 const auth = getAuth(app)
 const firestore = getFirestore(app)
-Location.setGoogleApiKey("AIzaSyAm23sJcn7EuK-maawqFysYe0RrMsagawo")
-
 
 export async function getCoordsFromAddress(address) {
   try {
-    const test = await Location.geocodeAsync("34 Silver Ridge Common", {useGoogleMaps: true})
-    console.log(test)
+    // const loc = await Location.geocodeAsync("34 Silver Ridge Common", {useGoogleMaps: true})
+    const loc = await fetch("https://maps.googleapis.com/maps/api/geocode/json?address=34+silver+ridge+common&key=" + apiKeys.googleMapsKey)
+    const res = await loc.json()
+    if (res.status == "OK") {
+      console.log(res)
+    }
+    else if (res.status == "ZERO_RESULTS"){
+
+    }
+    else {
+      Alert.alert("Error has occured", res.status)
+    }
+
   }
   catch (err) {
     console.log(err)
