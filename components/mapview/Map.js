@@ -5,7 +5,7 @@ import icon from './icons/toilet.png'
 import * as Location from 'expo-location';
 import {useNavigation} from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { getCoordsFromAddress } from '../../apis/api';
+
 
 export default function Map({navigation}) {
 
@@ -139,9 +139,6 @@ const styles = StyleSheet.create({
                 </MapView>
                 <View style = {styles.footer}>
                     <TouchableOpacity onPress = {handleBack}>
-                        <Text style = {styles.backText}>Dashboard</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress = {test}>
                         <Text style = {styles.backText}>Dashboard</Text>
                     </TouchableOpacity>
                 </View>

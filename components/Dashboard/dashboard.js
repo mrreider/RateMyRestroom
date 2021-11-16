@@ -65,6 +65,10 @@ export default function Dashboard({ navigation }) {
     navigation.navigate('Map')
   };
 
+  const handleAddMarker = () => {
+    navigation.navigate('Add Marker')
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Dashboard</Text>
@@ -74,6 +78,9 @@ export default function Dashboard({ navigation }) {
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleGoToMap}>
         <Text style={styles.buttonText}>Go To Map</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleAddMarker}>
+        <Text style={styles.buttonText}>Add New Restroom</Text>
       </TouchableOpacity>
     </View>
   )

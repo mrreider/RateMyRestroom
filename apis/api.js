@@ -13,14 +13,16 @@ const firestore = getFirestore(app)
 
 export async function getCoordsFromAddress(address) {
   try {
-    // const loc = await Location.geocodeAsync("34 Silver Ridge Common", {useGoogleMaps: true})
-    const loc = await fetch("https://maps.googleapis.com/maps/api/geocode/json?address=34+silver+ridge+common&key=" + apiKeys.googleMapsKey)
+    addString = address.trim().replace(" ", "+")
+    const loc = await fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + addString +  "&key=" + apiKeys.googleMapsKey)
     const res = await loc.json()
     if (res.status == "OK") {
-      console.log(res)
+      return res
+
     }
     else if (res.status == "ZERO_RESULTS"){
-
+      Alert.alert("Zero results")
+      console.log(res)
     }
     else {
       Alert.alert("Error has occured", res.status)

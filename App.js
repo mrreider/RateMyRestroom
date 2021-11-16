@@ -9,6 +9,7 @@ import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import Dashboard from './components/Dashboard/dashboard';
+import AddMarker from './components/AddMarker/AddMarker';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
         <Stack.Screen name= {'Loading'} component={LoadingScreen} options={{ headerShown: false }}/>
         <Stack.Screen name= 'Map' component={Map} options={{ headerShown: false }}/>
         <Stack.Screen name= 'Dashboard' component={Dashboard} options={{ headerShown: false, gestureEnabled: false }}/>
+        <Stack.Screen name= 'Add Marker' component={AddMarker} options={{ headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
