@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { View, StyleSheet, Text, Alert } from 'react-native';
-import icon from './icons/toilet.png'
 import * as Location from 'expo-location';
-import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { loadMarkers } from '../../apis/api';
+import { getFavorite, loadMarkers } from '../../apis/api';
 
 
 export default function Map({ navigation }) {
@@ -28,9 +26,12 @@ export default function Map({ navigation }) {
 
      async function fetchAndSetMarkers() {
         const getMarkers = await loadMarkers()
+        const favorite = await getFavorite()
         let newMarkers = []
         for (let i = 0; i < getMarkers.length; i++) {
-            const desc = "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description
+            const id = "" + getMarkers[i].coordinate.lat + getMarkers[i].coordinate.lng
+            const desc = (favorite == id) ? "FAVORITE!\n" + "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description : 
+            "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description
             newMarkers.push({
                 latlng: {
                     latitude: getMarkers[i].coordinate.lat,

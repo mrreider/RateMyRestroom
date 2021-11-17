@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { View, StyleSheet, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { loadMarkers } from '../../apis/api';
+import { loadMarkers, setFavorite } from '../../apis/api';
 
 export default function SelectFavorite({ navigation }) {
     const [open, setOpen] = useState(false)
@@ -17,10 +17,10 @@ export default function SelectFavorite({ navigation }) {
                 // console.log(getMarkers)
                 let newItems = []
                 for (let i = 0; i < getMarkers.length; i++) {
-                    uid = "" + getMarkers[i].coordinate.lat + getMarkers[i].coordinate.lng
+                    id = "" + getMarkers[i].coordinate.lat + getMarkers[i].coordinate.lng
                     newItems.push({
                         label: getMarkers[i].name,
-                        value: uid
+                        value: id
                     })
                 }
                 setItems(newItems)
@@ -59,21 +59,29 @@ export default function SelectFavorite({ navigation }) {
             justifyContent: 'center',
             marginStart: '16.4%'
         },
-        label: {
-            paddingTop: 12
-        },
-        labelRating: {
-            paddingTop: 12,
-            paddingBottom: 12
-        },
-        submitMarker: {
+        submit: {
             fontSize: 24,
             fontWeight: 'bold',
-            borderWidth: 1
+            borderWidth: 1,
+            marginTop: 30
         }
 
     })
 
+    const submitFavorite = async () => {
+        if (value == null){
+            Alert.alert("Please select an option")
+            return
+        }
+        const success = await setFavorite(value)
+        if (success) {
+            Alert.alert("Favorite set!")
+        }
+        else {
+            Alert.alert("Something went wrong with setting favorite")
+        }
+        navigation.navigate('Dashboard')
+    }
 
     return (
         <View style={styles.container}>
@@ -87,8 +95,8 @@ export default function SelectFavorite({ navigation }) {
                 setItems={setItems}
                 placeholder="Select favorite restroom"
             />
-            <TouchableOpacity>
-                <Text>Select</Text>
+            <TouchableOpacity style = {styles.submit} onPress = {submitFavorite}>
+                <Text>Select as favorite</Text>
             </TouchableOpacity>
         </View>
     )

@@ -1,7 +1,6 @@
-import { getFirestore, setDoc, getDoc, doc, query, collection, getDocs } from "firebase/firestore";
+import { getFirestore, setDoc, doc, query, collection, getDocs, updateDoc, getDoc } from "firebase/firestore";
 import { getApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { Alert } from "react-native";
 import { initializeApp } from 'firebase/app';
 import apiKeys from '../config/keys'
 
@@ -10,6 +9,29 @@ initializeApp(apiKeys.firebaseConfig);
 export const app = getApp()
 const auth = getAuth(app)
 const firestore = getFirestore(app)
+
+export async function getFavorite() {
+  document = doc(firestore, "users", auth.currentUser.uid)
+  try {
+    const snap = await getDoc(document)
+    return snap.data().favorite
+  } catch (err) {
+    console.log(err.message)
+  }
+}
+
+export async function setFavorite(favorite) {
+  document = doc(firestore, "users", auth.currentUser.uid)
+  try {
+    await updateDoc(document, {
+      favorite: favorite
+    });
+    return true
+  } catch (err) {
+    console.log(err)
+    return false
+  }
+}
 
 export async function loadMarkers() {
   let markerList = []
@@ -21,7 +43,6 @@ export async function loadMarkers() {
     })
     return markerList
   } catch (err) {
-    Alert.alert("Something went wrong!", err.message)
   }
 }
 
@@ -38,7 +59,6 @@ export async function sendMarkerToDatabase(marker) {
     })
     return true
   } catch (err) {
-    Alert.alert("There is something wrong!!", err.message)
     return false
   }
 }
@@ -52,17 +72,14 @@ export async function getCoordsFromAddress(address) {
       return res
     }
     else if (res.status == "ZERO_RESULTS") {
-      Alert.alert("Zero results")
       console.log(res)
     }
     else {
-      Alert.alert("Error has occured", res.status)
     }
 
   }
   catch (err) {
     console.log(err)
-    Alert.alert("There is something wrong", err.message)
   }
 }
 
@@ -77,9 +94,9 @@ export async function registration(email, password, lastName, firstName) {
       email: currentUser.email,
       lastName: lastName,
       firstName: firstName,
+      favorite: ""
     })
   } catch (err) {
-    Alert.alert("There is something wrong!!!!", err.message);
   }
 }
 
@@ -88,7 +105,6 @@ export async function signIn(email, password) {
     await signInWithEmailAndPassword(auth, email, password)
 
   } catch (err) {
-    Alert.alert("There is something wrong!", err.message);
   }
 }
 
@@ -96,6 +112,5 @@ export async function loggingOut() {
   try {
     await signOut(auth)
   } catch (err) {
-    Alert.alert('There is something wrong!', err.message);
   }
 }
