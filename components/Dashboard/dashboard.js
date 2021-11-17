@@ -69,6 +69,10 @@ export default function Dashboard({ navigation }) {
     navigation.navigate('Add Marker')
   }
 
+  const handleSelectFavorite = () => {
+    navigation.navigate('Select Favorite')
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Dashboard</Text>
@@ -81,6 +85,9 @@ export default function Dashboard({ navigation }) {
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleAddMarker}>
         <Text style={styles.buttonText}>Add New Restroom</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleSelectFavorite}>
+        <Text style={styles.buttonText}>Change favorite restroom</Text>
       </TouchableOpacity>
     </View>
   )
