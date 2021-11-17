@@ -10,6 +10,7 @@ import SignIn from './components/SignIn/SignIn';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import Dashboard from './components/Dashboard/dashboard';
 import AddMarker from './components/AddMarker/AddMarker';
+import DescribeMarker from './components/AddMarker/DescribeMarker';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
         <Stack.Screen name= 'Map' component={Map} options={{ headerShown: false }}/>
         <Stack.Screen name= 'Dashboard' component={Dashboard} options={{ headerShown: false, gestureEnabled: false }}/>
         <Stack.Screen name= 'Add Marker' component={AddMarker} options={{ headerShown: false}}/>
+        <Stack.Screen name= 'Describe Marker' component={DescribeMarker} options={{ headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

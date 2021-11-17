@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import icon from './icons/toilet.png'
 import * as Location from 'expo-location';
 import {useNavigation} from '@react-navigation/native';
@@ -69,24 +69,28 @@ export default function Map({navigation}) {
      * Will then set the region of the map to their location.
      */
 
-    // useEffect(() => {
-    //     async function getUserLocation() {
-    //         let {status} = await Location.requestForegroundPermissionsAsync();
-    //         if (status !== 'granted') {
-    //             return
-    //         }
-    //         let location = await Location.getCurrentPositionAsync()
-    //         const newRegion = {
-    //            latitude: location.coords.latitude,
-    //            longitude: location.coords.longitude,
-    //            latitudeDelta: 0.0922,
-    //            longitudeDelta: 0.0421
-    //        }
-    //        setRegion(newRegion)
-    //     }
+    useEffect(() => {
+        // async function getUserLocation() {
+        //     let {status} = await Location.requestForegroundPermissionsAsync();
+        //     if (status !== 'granted') {
+        //         return
+        //     }
+        //     let location = await Location.getCurrentPositionAsync()
+        //     const newRegion = {
+        //        latitude: location.coords.latitude,
+        //        longitude: location.coords.longitude,
+        //        latitudeDelta: 0.0922,
+        //        longitudeDelta: 0.0421
+        //    }
+        //    setRegion(newRegion)
+        // }
 
-    //     getUserLocation()
-    // })
+        // getUserLocation()
+
+        async function fetchAndSetMarkers() {
+            
+        }
+    })
     
 // Style for the map
 const styles = StyleSheet.create({
@@ -112,10 +116,7 @@ const styles = StyleSheet.create({
       navigation.replace('Dashboard')
   }
 
-  const test = () => {
-    getCoordsFromAddress("turkey")
-  }
-    
+
     //Where things are actually shown on screen
         return (
             <View style = {styles.container}>

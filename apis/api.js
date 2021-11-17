@@ -11,6 +11,22 @@ export const app = getApp()
 const auth = getAuth(app)
 const firestore = getFirestore(app)
 
+export async function sendMarkerToDatabase(marker) {
+  // uid of marker will be a concatentation of the latitude and longitude
+  uid = "" + marker.coordinate.lat + marker.coordinate.lng
+  document = doc(firestore, "markers", uid)
+  try {
+    await setDoc(document, {
+      coordinate: marker.coordinate,
+      name: marker.name,
+      rating: marker.rating,
+      description: marker.description
+    })
+  } catch (err) {
+    Alert.alert("There is something wrong!!", err.message)
+  }
+}
+
 export async function getCoordsFromAddress(address) {
   try {
     addString = address.trim().replace(" ", "+")
@@ -18,7 +34,6 @@ export async function getCoordsFromAddress(address) {
     const res = await loc.json()
     if (res.status == "OK") {
       return res
-
     }
     else if (res.status == "ZERO_RESULTS"){
       Alert.alert("Zero results")

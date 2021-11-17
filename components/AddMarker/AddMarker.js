@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { View, StyleSheet, Text, TextInput, Picker } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Picker, Alert } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { getCoordsFromAddress } from '../../apis/api';
@@ -7,7 +7,7 @@ import { getCoordsFromAddress } from '../../apis/api';
 export default function AddMarker({navigation}) {
     const [address, setAddress] = useState('')
     const [open, setOpen] = useState(false)
-    const [value, setValue] = useState()
+    const [value, setValue] = useState(null)
     const [items, setItems] = useState()
     const [listOpen, setListOpen] = useState(false)
 
@@ -44,10 +44,20 @@ export default function AddMarker({navigation}) {
         setListOpen(true)
     }
 
+    const submitValidAddress = () => {
+        if (value == null) {
+            Alert.alert("Please select an address!")
+            return
+        }
+        navigation.navigate('Describe Marker', {
+            location: value
+        })
+    }
+
     // Want to add search box
     return (
         <View style = {styles.container}>
-            <Text style = {styles.header}>Add a marker!</Text> 
+            <Text style = {styles.header}>Add a restroom!</Text> 
              <TextInput
              style = {styles.formInput}
              placeholder = "Enter address to add restroom"
@@ -61,11 +71,15 @@ export default function AddMarker({navigation}) {
                 items = {items}
                 setOpen = {setOpen}
                 setValue = {setValue}
-                setItems = {setItems}
              /> : null}
              <TouchableOpacity onPress = {submitSearch}>
                  <Text>Search</Text>
              </TouchableOpacity>
+             {/* {value == null ? null : */}
+             <TouchableOpacity onPress = {submitValidAddress}>
+                 <Text>Add Marker</Text>
+             </TouchableOpacity>
+             {/* } */}
         </View>
     );
 }
