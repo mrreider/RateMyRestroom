@@ -26,23 +26,24 @@ export default function Map({ navigation }) {
      * Will then set the region of the map to their location.
      */
 
-    useEffect(() => {
-        async function fetchAndSetMarkers() {
-            const getMarkers = await loadMarkers()
-            let newMarkers = []
-            for (let i = 0; i < getMarkers.length; i++) {
-                const desc = "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description
-                newMarkers.push({
-                    latlng: {
-                        latitude: getMarkers[i].coordinate.lat,
-                        longitude: getMarkers[i].coordinate.lng
-                    },
-                    title: getMarkers[i].name,
-                    description: desc
-                })
-            }
-            setMarkers(newMarkers)
+     async function fetchAndSetMarkers() {
+        const getMarkers = await loadMarkers()
+        let newMarkers = []
+        for (let i = 0; i < getMarkers.length; i++) {
+            const desc = "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description
+            newMarkers.push({
+                latlng: {
+                    latitude: getMarkers[i].coordinate.lat,
+                    longitude: getMarkers[i].coordinate.lng
+                },
+                title: getMarkers[i].name,
+                description: desc
+            })
         }
+        setMarkers(newMarkers)
+    }
+
+    useEffect(() => {
         if (!fetched) {
             fetchAndSetMarkers()
             setFetched(true)
@@ -92,6 +93,10 @@ export default function Map({ navigation }) {
         await getUserLocation();
     }
 
+    const reloadMarkers = async () => {
+        await fetchAndSetMarkers()
+    }
+
 
     //Where things are actually shown on screen
     return (
@@ -120,6 +125,9 @@ export default function Map({ navigation }) {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={findUser}>
                     <Text style={styles.backText}>Locate Me!</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={reloadMarkers}>
+                    <Text style={styles.backText}>Reload Markers</Text>
                 </TouchableOpacity>
             </View>
 

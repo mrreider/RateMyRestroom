@@ -1,8 +1,8 @@
-import {getFirestore, setDoc, getDoc ,doc, query, collection, getDocs} from "firebase/firestore";
+import { getFirestore, setDoc, getDoc, doc, query, collection, getDocs } from "firebase/firestore";
 import { getApp } from "firebase/app";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth'
-import {Alert} from "react-native";
-import {initializeApp} from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { Alert } from "react-native";
+import { initializeApp } from 'firebase/app';
 import apiKeys from '../config/keys'
 
 
@@ -46,12 +46,12 @@ export async function sendMarkerToDatabase(marker) {
 export async function getCoordsFromAddress(address) {
   try {
     addString = address.trim().replace(" ", "+")
-    const loc = await fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + addString +  "&key=" + apiKeys.googleMapsKey)
+    const loc = await fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + addString + "&key=" + apiKeys.googleMapsKey)
     const res = await loc.json()
     if (res.status == "OK") {
       return res
     }
-    else if (res.status == "ZERO_RESULTS"){
+    else if (res.status == "ZERO_RESULTS") {
       Alert.alert("Zero results")
       console.log(res)
     }
@@ -74,9 +74,9 @@ export async function registration(email, password, lastName, firstName) {
     // Update user database
     const currentUser = auth.currentUser
     await setDoc(doc(firestore, "users", currentUser.uid), {
-        email: currentUser.email,
-        lastName: lastName,
-        firstName: firstName,
+      email: currentUser.email,
+      lastName: lastName,
+      firstName: firstName,
     })
   } catch (err) {
     Alert.alert("There is something wrong!!!!", err.message);
