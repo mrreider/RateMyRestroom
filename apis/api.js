@@ -1,4 +1,4 @@
-import {getFirestore, setDoc, doc} from "firebase/firestore";
+import {getFirestore, setDoc, getDoc ,doc, query, collection, getDocs} from "firebase/firestore";
 import { getApp } from "firebase/app";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import {Alert} from "react-native";
@@ -10,6 +10,20 @@ initializeApp(apiKeys.firebaseConfig);
 export const app = getApp()
 const auth = getAuth(app)
 const firestore = getFirestore(app)
+
+export async function loadMarkers() {
+  let markerList = []
+  col = collection(firestore, "markers")
+  try {
+    markerSnap = await getDocs(query(col))
+    markerSnap.forEach(doc => {
+      markerList.push(doc.data())
+    })
+    return markerList
+  } catch (err) {
+    Alert.alert("Something went wrong!", err.message)
+  }
+}
 
 export async function sendMarkerToDatabase(marker) {
   // uid of marker will be a concatentation of the latitude and longitude
