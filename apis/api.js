@@ -22,8 +22,10 @@ export async function sendMarkerToDatabase(marker) {
       rating: marker.rating,
       description: marker.description
     })
+    return true
   } catch (err) {
     Alert.alert("There is something wrong!!", err.message)
+    return false
   }
 }
 

@@ -59,7 +59,7 @@ export default function DescribeMarker({route, navigation}) {
         return tempItems
     }
 
-    const sendAndAddMarker = () => {
+    const sendAndAddMarker = async () => {
         if (name == '' || rating == 0 || description == '') {
             Alert.alert("Please complete all fields")
             return
@@ -71,7 +71,14 @@ export default function DescribeMarker({route, navigation}) {
             rating: rating,
             description: description
         }
-        sendMarkerToDatabase(obToSend)
+        const result = await sendMarkerToDatabase(obToSend)
+        if (result) {
+            Alert.alert("Marker added!")    
+        }
+        else {
+            Alert.alert("There was an error with adding the marker")
+        }
+        navigation.navigate('Dashboard')
     }
 
     return (
