@@ -17,7 +17,7 @@ export async function getFavorite() {
     const snap = await getDoc(document)
     return snap.data().favorite
   } catch (err) {
-    console.log(err.message)
+    Alert.alert("there is an error", err.message)
   }
 }
 
@@ -29,7 +29,7 @@ export async function setFavorite(favorite) {
     });
     return true
   } catch (err) {
-    console.log(err)
+    Alert.alert("there is an error", err.message)
     return false
   }
 }
@@ -44,6 +44,7 @@ export async function loadMarkers() {
     })
     return markerList
   } catch (err) {
+    Alert.alert("there is an error", err.message)
   }
 }
 
@@ -60,6 +61,7 @@ export async function sendMarkerToDatabase(marker) {
     })
     return true
   } catch (err) {
+    Alert.alert("there is an error", err.message)
     return false
   }
 }
@@ -73,14 +75,13 @@ export async function getCoordsFromAddress(address) {
       return res
     }
     else if (res.status == "ZERO_RESULTS") {
-      console.log(res)
     }
     else {
     }
 
   }
   catch (err) {
-    console.log(err)
+    Alert.alert("there is an error", err.message)
   }
 }
 
@@ -107,6 +108,7 @@ export async function signIn(email, password) {
     await signInWithEmailAndPassword(auth, email, password)
 
   } catch (err) {
+    Alert.alert("there is an error", err.message)
   }
 }
 
@@ -114,5 +116,6 @@ export async function loggingOut() {
   try {
     await signOut(auth)
   } catch (err) {
+    Alert.alert("there is an error", err.message)
   }
 }
