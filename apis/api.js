@@ -3,6 +3,7 @@ import { getApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { initializeApp } from 'firebase/app';
 import apiKeys from '../config/keys'
+import { Alert } from "react-native";
 
 
 initializeApp(apiKeys.firebaseConfig);
@@ -97,6 +98,7 @@ export async function registration(email, password, lastName, firstName) {
       favorite: ""
     })
   } catch (err) {
+    Alert.alert("there is an error", err.message)
   }
 }
 
