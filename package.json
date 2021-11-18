@@ -11,7 +11,9 @@
   "jest": {
     "preset": "jest-expo",
     "collectCoverage": true,
-    "coverageReporters": ["json"]
+    "coverageReporters": [
+      "json"
+    ]
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.11",
@@ -22,6 +24,8 @@
     "expo-location": "~13.0.4",
     "expo-status-bar": "~1.1.0",
     "firebase": "^9.4.0",
+    "firebase-admin": "^10.0.0",
+    "firebase-functions-test": "^0.3.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "^0.64.3",

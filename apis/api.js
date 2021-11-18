@@ -115,7 +115,9 @@ export async function signIn(email, password) {
 export async function loggingOut() {
   try {
     await signOut(auth)
+    return true
   } catch (err) {
     Alert.alert("there is an error", err.message)
+    return false
   }
 }
