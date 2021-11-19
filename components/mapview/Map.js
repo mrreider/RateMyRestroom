@@ -28,7 +28,7 @@ export default function Map({ navigation }) {
         const getMarkers = await loadMarkers()
         const favorite = await getFavorite()
         let newMarkers = []
-        for (let i = 0; i < getMarkers.length; i++) {ret
+        for (let i = 0; i < getMarkers.length; i++) {
             const id = "" + getMarkers[i].coordinate.lat + getMarkers[i].coordinate.lng
             const desc = (favorite == id) ? "FAVORITE!\n" + "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description : 
             "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description

@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { FirebaseError } from '@firebase/util';
-import * as API from '../../apis/api'
+import * as API from '../apis/api'
 import * as path from "path"
 import {functions} from "firebase-functions-test"
 import { getAuth } from '@firebase/auth';
