@@ -1,8 +1,10 @@
 # RateMyRestroom MapView
 506 Spike Project
 
-Please run "npm install" after cloning the github repo to install the correct packages
+Please run "npm install" after cloning the github repo on master to install the correct packages
 Expo-cli also must be installed prior to running the code.
+
+To reach master, if you are not in the branch, use the command "git checkout master"
 
 In the canvas submission there will be a "keys.js" file. Place this file in the "config" folder in the "RateMyRestroom" main folder. This will give the user the proper api keys to run the application.
 
