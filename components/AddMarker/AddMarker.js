@@ -1,3 +1,4 @@
+import { signInWithCustomToken } from '@firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, TextInput, Picker, Alert } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -14,7 +15,7 @@ export default function AddMarker({ navigation }) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#fff',
+            backgroundColor: '#d4302a',
             alignItems: 'center',
             justifyContent: 'center',
         },
@@ -22,13 +23,47 @@ export default function AddMarker({ navigation }) {
             margin: 15,
             height: 40,
             borderColor: '#7a42f4',
+            backgroundColor: '#fff',
             borderWidth: 1,
-            width: '67%'
+            width: '67%',
+            fontFamily: 'Futura',
+            paddingLeft: 10,
+            
+            
+        },
+        dropDown: {
+            
+            fontFamily: 'Futura'
+            
+            
         },
         header: {
+            marginTop: 10,
             fontSize: 25,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            fontFamily: 'Futura',
+            color: "white",
+            height: 100
+        },
+        button1: {
+            fontSize: 20,
+            //fontWeight: 'bold',
+            fontFamily: 'Futura',
+            color: "#007ad1",
+            height: 50,
+            marginTop: 50,
+            marginBottom: 0
+        },
+        button2: {
+            fontSize: 20,
+            //fontWeight: 'bold',
+            fontFamily: 'Futura',
+            color: "#007ad1",
+            height: 100,
+            marginTop: 0,
+            marginBottom: 10
         }
+
     })
 
     const submitSearch = async () => {
@@ -68,7 +103,7 @@ export default function AddMarker({ navigation }) {
     // Want to add search box
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Add a restroom!</Text>
+            <Text style={styles.header}>Add a Restroom</Text>
             <TextInput
                 style={styles.formInput}
                 placeholder="Enter address to add restroom"
@@ -76,7 +111,7 @@ export default function AddMarker({ navigation }) {
                 onChangeText={(address) => setAddress(address)}
             />
             {listOpen ?
-                <DropDownPicker
+                <DropDownPicker style={styles.dropDown}
                     open={open}
                     value={value}
                     items={items}
@@ -84,11 +119,11 @@ export default function AddMarker({ navigation }) {
                     setValue={setValue}
                 /> : null}
             <TouchableOpacity onPress={submitSearch}>
-                <Text>Search</Text>
+                <Text style={styles.button1}>Search</Text>
             </TouchableOpacity>
             {value == null ? null :
                 <TouchableOpacity onPress={submitValidAddress}>
-                    <Text>Add Marker</Text>
+                    <Text style={styles.button2}>Add Marker</Text>
                 </TouchableOpacity>
             }
         </View>

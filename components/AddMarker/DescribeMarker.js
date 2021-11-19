@@ -13,20 +13,25 @@ export default function DescribeMarker({route, navigation}) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#fff',
+            backgroundColor: '#d4302a',
             alignItems: 'center',
             justifyContent: 'center',
         },
         formInput: {
             margin: 15,
             height: 40,
-            borderColor: '#7a42f4',
+            borderColor: '#000',
             borderWidth: 1,
-            width: '67%'
+            width: '67%',
+            fontFamily: 'Futura',
+            backgroundColor: "white"
         },
         header: {
             fontSize: 25,
-            fontWeight: 'bold'
+            fontFamily: 'Futura',
+            fontWeight: 'bold',
+            color: "white",
+            marginBottom: 100
         },
         dropdown: {
             width: '67%',
@@ -41,9 +46,11 @@ export default function DescribeMarker({route, navigation}) {
             paddingBottom: 12
         },
         submitMarker: {
-            fontSize: 24,
-            fontWeight: 'bold',
-            borderWidth: 1
+            fontSize: 20,
+            color: "#007ad1",
+            fontFamily: "Futura"
+            
+            //fontWeight: 'bold'
         }
 
     })
@@ -83,15 +90,15 @@ export default function DescribeMarker({route, navigation}) {
 
     return (
         <View style = {styles.container}>
-            <Text style = {styles.header}>Describe the restroom!</Text>
-            <Text style = {styles.label}>Name</Text>
+            <Text style = {styles.header}>Describe the Restroom</Text>
+            
             <TextInput
              style = {styles.formInput}
              placeholder = "Enter name of restroom"
              value = {name}
              onChangeText = {(name) => setName(name)}
              />
-             <Text style = {styles.labelRating}>Rating</Text>
+             
              <DropDownPicker
                 style = {styles.dropdown}
                 open = {open}
@@ -101,7 +108,7 @@ export default function DescribeMarker({route, navigation}) {
                 setValue = {setRating}
                 placeholder = "Please select a rating 1-5"
              />
-             <Text style = {styles.label}>Description</Text>
+             
              <TextInput
              style = {styles.formInput}
              placeholder = "Please enter a description"
