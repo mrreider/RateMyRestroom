@@ -39,7 +39,7 @@ export default function SelectFavorite({ navigation }) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#fff',
+            backgroundColor: '#d4302a',
             alignItems: 'center',
             justifyContent: 'center',
         },
@@ -52,7 +52,10 @@ export default function SelectFavorite({ navigation }) {
         },
         header: {
             fontSize: 25,
-            fontWeight: 'bold'
+            fontFamily: 'Futura',
+            fontWeight: 'bold',
+            color: "white",
+            marginBottom: 100
         },
         dropdown: {
             width: '67%',
@@ -60,10 +63,15 @@ export default function SelectFavorite({ navigation }) {
             marginStart: '16.4%'
         },
         submit: {
-            fontSize: 24,
-            fontWeight: 'bold',
-            borderWidth: 1,
-            marginTop: 30
+            fontSize: 30,
+            //fontWeight: 'bold',
+            marginTop: 30,
+        },
+        submitText: {
+            fontSize: 15,
+            //fontWeight: 'bold',
+            fontFamily: "Futura",
+            color: "#007ad1"
         }
 
     })
@@ -85,7 +93,7 @@ export default function SelectFavorite({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Select your favorite restroom</Text>
+            <Text style={styles.header}>Favorite Restroom</Text>
             <DropDownPicker
                 style={styles.dropdown}
                 open={open}
@@ -96,7 +104,7 @@ export default function SelectFavorite({ navigation }) {
                 placeholder="Select favorite restroom"
             />
             <TouchableOpacity style = {styles.submit} onPress = {submitFavorite}>
-                <Text>Select as favorite</Text>
+                <Text style = {styles.submitText}>Select as favorite</Text>
             </TouchableOpacity>
         </View>
     )

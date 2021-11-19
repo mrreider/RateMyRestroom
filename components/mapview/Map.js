@@ -4,6 +4,7 @@ import { View, StyleSheet, Text, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { getFavorite, loadMarkers } from '../../apis/api';
+import { color } from 'react-native-reanimated';
 
 
 export default function Map({ navigation }) {
@@ -55,16 +56,21 @@ export default function Map({ navigation }) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
+            backgroundColor: '#d4302a'
             // justifyContent: 'center',
             // alignItems: 'center',
         },
         footer: {
             margin: 10,
-            marginBottom: 37
+            marginBottom: 37,
+            backgroundColor: '#d4302a'
         },
         backText: {
             fontSize: 20,
             textAlign: 'center',
+            fontFamily: 'Futura',
+           //fontWeight: 'bold',
+            color: 'white'
         },
         map: {
             flex: 1
