@@ -55,7 +55,7 @@ export default function SignIn({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
+    <Viewe style={styles.container}>
       <Text style={styles.text}>Sign in to your account:</Text>
 
       <TextInput
@@ -77,6 +77,6 @@ export default function SignIn({navigation}) {
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
 
-    </View>
+    </Viewe>
   );
 }
