@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ratemyrestroom-8e1a3",
+  "private_key_id": "e516f5d214013ee769e70554340002401405693a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDT6sHwZcEXiLyo\nxcF2Fs7Cc2bgbeONFP1eK0r2yAnnyYnUjJTULbLfh/yYpsYRAleWs4LAE0p4+oNR\nT5czUG0Ze33ZpPmPrRvpZlrUzdX2Vp0nsT3N6i2gfyUDZukiXeO1T9DKS8jQQ7Uv\n1Cc2XtSpY6XZrtpC5ogpnbr6KPx6Zqxef6NMTga/mXINHiVp7/imAuisofYsSLk0\nDdD26fChoe4jNRR29VD0fAE5eU1QdrR+MRtg9KlJVj87KJqBQzZDKm3lAWD4xoiA\n033TlnLpED6P3ofsFqsvItLPclA+Fcj/vvQqKPxTSjclPzRu1wRqk4MMXm9xBsqX\nvK1XZc8hAgMBAAECggEAAqrs4BLX2Gz/OvyqT8s/tRDw1ZhsieUev2W6HtsrzMAr\nvQI8CWO94bR7iIxo5+PoqFwAJFzZziYRKx/eXmX/yZdVYT0DazyZolmIgS9KJzy1\n478GcSYmhuOy2pUcEDOwXyLvFOzZTU3c5Qo9qCCPesZnWxMpajgutJ9osCd97iiA\n15Um+IpOd8sF2FOHEv4wR+uc4bHR+6Wu3Y6VWdADzEA5iSvgKdQ8PAQJ9560HJ7p\n1PC7ftnPKNRauDEUONPw85sHlR4Qh/cGpg9wUpECspbOlfOMw3p3QpqecB8cICM/\ntASscKXFOnOv/BMPLGmfngPuNTRGG0SesddORqsyMQKBgQD68QHmOkApTkXPZbkt\nOA8Hm86GukD94Z1NsQFhvQI8G/N67RwXaadcUz/VauNK2s+spLD22KUb/FGGRLBJ\nYYmaiP7K6kDUTCej5uem5tNTzh+i7wH7kho/1xbBmjMMdAjK+afMUymcAPuVwiMM\ntewAoDiibQIF18RzNRomM9VBxQKBgQDYMFz8KE9WHqJBHENVH8yv16h/VIbtSTjC\nUoCENDTH/SQe/wvaFFFZZoDA27iJVzwlX6/LS2WUjMgLBgwz+/1SoudPxczCqGnz\neBIyxd73grwcyhb5QlTv0lgUFM484sJCNSO8YBYRIBBvMSM3F1AqEd1yHOJd8wWI\nlJfw9c25rQKBgEtjpodtTqNaMZzqWaSdJ97IT1aolCfx5RlXKSwc5ZP7bb2riHn8\nMtyI4i+SyjBN5oBehg/S7F+pATEOZ8vT8swrhiieEdX1/x69mzDIPgr6bQS9O2JB\n9YLicqK9WcLPBWk9cczv2xtULEFErtT9vqY9fGZHy4jH1uwpsu5xOgtlAoGAQP3Z\nFl0v7J3s/VH31AFpUXutxgmtPmyCybhvtk7Th0PMthzKfVcaVZwBHPlw8qjtBfdM\nK/uQoCXqhZXd2UrqDwu2Kj82nVZv86enIOhnbVU6JBWE7o5IZoh/vhm7Hoa1C55a\nDel8+M0A48yL36X8jYktX37bdo72nOa+/suGe0kCgYEAnr2wRImmRzmnSyzc6vM6\ngliC5gdWHULj6CFNP2ulajTGpiXU4dwknoDFT04CXhMORZIsnTJO5pteSyTz950f\nRHPq4J1K0QQUB3QhZV/XDzku9CS2W1djmkEgoQRJCeukSwjGs+Wa88I2yWN1GAyp\nVvUdjgRA0+bK6GvQg6oddxk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-i7o8i@ratemyrestroom-8e1a3.iam.gserviceaccount.com",
+  "client_id": "109225924104083945193",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-i7o8i%40ratemyrestroom-8e1a3.iam.gserviceaccount.com"
+}

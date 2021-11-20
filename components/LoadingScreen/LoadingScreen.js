@@ -11,7 +11,7 @@ export default function LoadingScreen({ navigation }) {
         () => {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    navigation.replace('Map')
+                    navigation.replace('Dashboard')
                 }
                 else {
                     navigation.replace('Welcome')
