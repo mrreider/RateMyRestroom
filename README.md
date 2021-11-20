@@ -1,6 +1,8 @@
 # RateMyRestroom MapView
 506 Spike Project
 
+THIS PROJECT IS INTENDED FOR IOS ONLY.
+
 Please run "npm install" after cloning the github repo on master to install the correct packages
 Expo-cli also must be installed prior to running the code.
 
