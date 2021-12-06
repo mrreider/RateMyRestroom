@@ -25,7 +25,7 @@ export default function SignIn({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo_image} source={require("./assets/logo.png")} />
+      <Image style={styles.logo_image} source={require("../../assets/logo.png")} />
       
       <StatusBar style="auto" />
 

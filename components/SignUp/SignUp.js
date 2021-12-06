@@ -44,7 +44,7 @@ export default function SignUp({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo_image} source={require("./assets/logo.png")} />
+      <Image style={styles.logo_image} source={require("../../assets/logo.png")} />
 
       <Text style={styles.main_title_text}>Create an Account</Text>
 

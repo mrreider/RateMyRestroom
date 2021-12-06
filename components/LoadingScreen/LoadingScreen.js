@@ -8,7 +8,7 @@ const auth = getAuth(app)
 
 export default function LoadingScreen({ navigation }) {
     useEffect(
-        () => {
+        async () => {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     navigation.replace('Dashboard')

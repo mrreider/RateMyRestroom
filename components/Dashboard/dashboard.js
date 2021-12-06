@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, StatusBar} from 'react-native';
 import {doc, getFirestore, getDoc} from "firebase/firestore";
 import { getApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
@@ -50,7 +50,7 @@ export default function Dashboard({ navigation }) {
   
   return (
     <View style={styles.container}>
-      <Image style={styles.logo_image} source={require("./assets/logo.png")} />
+      <Image style={styles.logo_image} source={require("../../assets/logo.png")} />
 
       <Text style={styles.main_title_text}>Dashboard</Text>
 
