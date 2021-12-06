@@ -58,19 +58,19 @@ export default function Dashboard({ navigation }) {
 
       <Text style={styles.first_name_text}>Hi {firstName} 🤗</Text>
 
-      <TouchableOpacity style={styles.button_top_left}>
+      <TouchableOpacity style={styles.button_top_left} onPress={handlePress}>
         <Text style={styles.button_top_left_text}>Log Out</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button_top_right}>
+      <TouchableOpacity style={styles.button_top_right} onPress={handleGoToMap}>
         <Text style={styles.button_top_right_text}>Go To Map</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button_bottom_left}>
+      <TouchableOpacity style={styles.button_bottom_left} onPress={handleAddMarker}>
         <Text style={styles.button_bottom_left_text}>Add New Restroom</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button_bottom_right}>
+      <TouchableOpacity style={styles.button_bottom_right} onPress={handleSelectFavorite}>
         <Text style={styles.button_bottom_right_text}>Change Favorite Restroom</Text>
       </TouchableOpacity>
     </View>
