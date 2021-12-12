@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert, LogBox } from 'react-native';
 import Map from './components/mapview/Map';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,6 +14,7 @@ import DescribeMarker from './components/AddMarker/DescribeMarker';
 import SelectFavorite from './components/SelectFavorite/SelectFavorite';
 
 const Stack = createStackNavigator();
+LogBox.ignoreAllLogs(true)
 export default function App() {
 
 
