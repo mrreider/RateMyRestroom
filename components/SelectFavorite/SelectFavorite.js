@@ -14,7 +14,6 @@ export default function SelectFavorite({ navigation }) {
         async function fetchMarkersGetList() {
             try {
                 const getMarkers = await loadMarkers()
-                // console.log(getMarkers)
                 let newItems = []
                 for (let i = 0; i < getMarkers.length; i++) {
                     id = "" + getMarkers[i].coordinate.lat + getMarkers[i].coordinate.lng
@@ -23,11 +22,9 @@ export default function SelectFavorite({ navigation }) {
                         value: id
                     })
                 }
-                console.log(newItems)
                 setItems(newItems)
             }
             catch (err) {
-                Alert.alert("something went wrong", err.message)
             }
             
         }

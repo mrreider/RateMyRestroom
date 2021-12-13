@@ -11,6 +11,7 @@
   },
   "jest": {
     "preset": "jest-expo",
+    "setupFilesAfterEnv": ["./setup.js"],
     "collectCoverage": true,
     "coverageReporters": [
       [

@@ -16,7 +16,7 @@ import * as Location from 'expo-location';
 import * as FireStore from 'firebase/firestore'
 import Dashboard from '../components/Dashboard/dashboard'
 import WelcomeScreen from '../components/Welcome/Welcome'
-import {withHooks} from 'jest-react-hooks-shallow'
+
 // import enableHooks from 'jest-react-hooks-shallow';
 import SelectFavorite from '../components/SelectFavorite/SelectFavorite'
 import AddMarker from '../components/AddMarker/AddMarker'
@@ -359,6 +359,7 @@ describe("Tests for API with test account", () => {
 
     test('inner api of add marker', async () => {
         jest.spyOn(API, "getCoordsFromAddress").mockImplementation(val => {
+            if (val == "err") throw 'Exception'
             return {
                 results: [
                     {
@@ -375,6 +376,9 @@ describe("Tests for API with test account", () => {
                 navigate: jest.fn()
             }}
         />)
+        await c.find('View').children().at(2).props().onPress()
+        c.find('View').children().at(1).props().onChangeText("err")
+        await c.find('View').children().at(2).props().onPress()
         c.find('View').children().at(1).props().onChangeText("fakeAddress")
         await c.find('View').children().at(2).props().onPress()
         c.find('View').children().at(2).props().setValue(0)
