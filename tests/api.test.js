@@ -299,6 +299,58 @@ describe("Tests for API with test account", () => {
         
     })
 
+    test('inner api of select favorite 2', async () => {
+        jest.spyOn(API, "loadMarkers").mockImplementation(() => {
+            return [{
+                coordinate: {
+                    lat: 0,
+                    lng: 0
+                },
+                name: "test"
+            }]
+        })
+        // withHooks(async () => {
+            c = shallow(<SelectFavorite 
+                navigation = {{
+                    navigate: jest.fn()
+                }}/>)
+            c.find('View').children().at(1).props().setOpen(true)
+            c.find('View').children().at(1).props().setValue(1)
+            c.find('View').children().at(1).props().setItems([{
+                value: 1,
+                label: "test"
+            }])
+            await c.find('View').children().at(2).props().onPress()
+        // })
+        
+    })
+
+    test('inner api of select favorite 2', async () => {
+        jest.spyOn(API, "loadMarkers").mockImplementation(() => {
+            return [{
+                coordinate: {
+                    lat: 0,
+                    lng: 0
+                },
+                name: "test"
+            }]
+        })
+        // withHooks(async () => {
+            c = shallow(<SelectFavorite 
+                navigation = {{
+                    navigate: jest.fn()
+                }}/>)
+            c.find('View').children().at(1).props().setOpen(true)
+            c.find('View').children().at(1).props().setValue(2)
+            c.find('View').children().at(1).props().setItems([{
+                value: 1,
+                label: "test"
+            }])
+            await c.find('View').children().at(2).props().onPress()
+        // })
+        
+    })
+
     test('inner api of add marker', async () => {
         jest.spyOn(API, "getCoordsFromAddress").mockImplementation(val => {
             return {

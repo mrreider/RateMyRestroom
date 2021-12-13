@@ -23,6 +23,7 @@ export default function SelectFavorite({ navigation }) {
                         value: id
                     })
                 }
+                console.log(newItems)
                 setItems(newItems)
             }
             catch (err) {
@@ -91,6 +92,13 @@ export default function SelectFavorite({ navigation }) {
         navigation.navigate('Dashboard')
     }
 
+    const getLabelFromVal = (val) => {
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].value == val)
+                return items[i].label 
+        }
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Favorite Restroom</Text>
@@ -101,7 +109,7 @@ export default function SelectFavorite({ navigation }) {
                 items={items}
                 setValue={setValue}
                 setItems={setItems}
-                placeholder="Select favorite restroom"
+                placeholder= {value == null ? "Select favorite restroom" : getLabelFromVal(value)} 
             />
             <TouchableOpacity style = {styles.submit} onPress = {submitFavorite}>
                 <Text style = {styles.submitText}>Select as favorite</Text>
