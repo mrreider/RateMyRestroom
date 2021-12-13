@@ -133,8 +133,8 @@ describe("Tests for API with test account", () => {
         jest.spyOn(API, "loadMarkers").mockImplementation(() => {
             return [
                 {coordinate: {
-                    latitude: 0,
-                    longitude: 0
+                    lat: 0,
+                    lng: 0
                 },
                 name: "test",
                 rating: "test",
