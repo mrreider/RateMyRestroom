@@ -15,7 +15,7 @@ Enzyme.configure({ adapter: new Adapter() })
 describe("hooks tests", () => {
     test("select favorite useeffect", () => {
         withHooks(() => {
-            jest.spyOn(API, "loadMarkers").mockImplementation(async () => {
+            jest.spyOn(API, "loadMarkers").mockImplementation( () => {
                 return [{
                     coordinate: {
                         lat:0,
