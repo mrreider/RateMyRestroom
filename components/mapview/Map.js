@@ -7,6 +7,8 @@ import { getFavorite, loadMarkers } from '../../apis/api';
 import { color } from 'react-native-reanimated';
 
 
+
+
 export default function Map({ navigation }) {
 
     const [region, setRegion] = useState({
@@ -20,34 +22,11 @@ export default function Map({ navigation }) {
 
     const [markers, setMarkers] = useState([])
 
-    /**
-     * Will prompt the user for permission to fetch their location
-     * Will then set the region of the map to their location.
-     */
+    
 
-     async function fetchAndSetMarkers() {
-        const getMarkers = await loadMarkers()
-        const favorite = await getFavorite()
-        let newMarkers = []
-        for (let i = 0; i < getMarkers.length; i++) {
-            const id = "" + getMarkers[i].coordinate.lat + getMarkers[i].coordinate.lng
-            const desc = (favorite == id) ? "FAVORITE!\n" + "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description : 
-            "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description
-            newMarkers.push({
-                latlng: {
-                    latitude: getMarkers[i].coordinate.lat,
-                    longitude: getMarkers[i].coordinate.lng
-                },
-                title: getMarkers[i].name,
-                description: desc
-            })
-        }
-        setMarkers(newMarkers)
-    }
-
-    useEffect(() => {
+    useEffect(async () => {
         if (!fetched) {
-            fetchAndSetMarkers()
+            await fetchAndSetMarkers()
             setFetched(true)
         }
     })
@@ -83,6 +62,7 @@ export default function Map({ navigation }) {
 
     async function getUserLocation() {
         let { status } = await Location.requestForegroundPermissionsAsync();
+        console.log(status)
         if (status !== 'granted') {
             return
         }
@@ -94,6 +74,31 @@ export default function Map({ navigation }) {
             longitudeDelta: 0.0421
         }
         setRegion(newRegion)
+    }
+
+    /**
+     * Will prompt the user for permission to fetch their location
+     * Will then set the region of the map to their location.
+     */
+
+    async function fetchAndSetMarkers() {
+        const getMarkers = await loadMarkers()
+        const favorite = await getFavorite()
+        let newMarkers = []
+        for (let i = 0; i < getMarkers.length; i++) {
+            const id = "" + getMarkers[i].coordinate.lat + getMarkers[i].coordinate.lng
+            const desc = (favorite == id) ? "FAVORITE!\n" + "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description : 
+            "Rating: " + getMarkers[i].rating + "\n" + getMarkers[i].description
+            newMarkers.push({
+                latlng: {
+                    latitude: getMarkers[i].coordinate.lat,
+                    longitude: getMarkers[i].coordinate.lng
+                },
+                title: getMarkers[i].name,
+                description: desc
+            })
+        }
+        setMarkers(newMarkers)
     }
 
     const findUser = async () => {

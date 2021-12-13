@@ -71,7 +71,6 @@ export default function DescribeMarker({route, navigation}) {
             Alert.alert("Please complete all fields")
             return
         }
-        console.log(route.params.location)
         const obToSend = {
             coordinate: route.params.location,
             name: name,

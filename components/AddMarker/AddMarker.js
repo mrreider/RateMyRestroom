@@ -90,7 +90,6 @@ export default function AddMarker({ navigation }) {
     }
 
     const submitValidAddress = () => {
-        console.log(value)
         if (value == null) {
             Alert.alert("Please select an address!")
             return
