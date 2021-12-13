@@ -44,7 +44,6 @@ describe("Tests for API with test account", () => {
             const result = user.exists()
             expect(result).toBe(true)
         } catch (err) {
-            console.log(err.message)
             fail('should not reach here')
         }
         finally {
@@ -73,7 +72,6 @@ describe("Tests for API with test account", () => {
             const result = await API.getCoordsFromAddress("34 silver ridge common")
             expect(result).not.toBe(null)
         } catch (err) {
-            console.log(err.message)
             fail('should not reach here')
         }
     })
@@ -93,7 +91,6 @@ describe("Tests for API with test account", () => {
             expect(result).toBe(true) 
         }
         catch (err) {
-            console.log(err.message)
             fail('should not reach here')
         }
         finally {
@@ -109,7 +106,6 @@ describe("Tests for API with test account", () => {
         try {
             const result = await API.loadMarkers()
         } catch(err) {
-            console.log(err.message)
             fail('code should not reach here')
         }
     })
@@ -127,7 +123,6 @@ describe("Tests for API with test account", () => {
             const favResult = await API.getFavorite()
             expect(favResult).toBe(String(random))
         } catch (err) {
-            console.log(err.message)
             fail('code should not reach here')
         }
 
