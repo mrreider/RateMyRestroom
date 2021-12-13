@@ -10,13 +10,20 @@ export default function SignIn({navigation}) {
   const handlePress = () => {
     if (!email) {
       Alert.alert('Email field is required.');
+      return
     }
 
     if (!password) {
       Alert.alert('Password field is required.');
+      return
     }
 
-    signIn(email, password);
+    try {
+      signIn(email, password);
+    } catch(err) {
+      return
+    }
+    
     navigation.navigate('Loading');
     setEmail('');
     setPassword('');

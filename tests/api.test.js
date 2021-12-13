@@ -187,7 +187,10 @@ describe("Tests for API with test account", () => {
 
 
     test('inner api of SignIn', () => {
-        jest.spyOn(API, "signIn").mockImplementation(() => false)
+        jest.spyOn(API, "signIn").mockImplementation((email, password) => {
+            if (password == "wrong") throw 'Exception'
+            return false
+        })
         c = shallow(<SignIn 
         navigation = {{
             navigate: jest.fn()
@@ -195,6 +198,9 @@ describe("Tests for API with test account", () => {
         />)
         c.find('View').children().at(4).props().onPress()
         c.find('View').children().at(2).props().onChangeText("test@test.com")
+        c.find('View').children().at(4).props().onPress()
+        c.find('View').children().at(3).props().onChangeText("wrong")
+        c.find('View').children().at(4).props().onPress()
         c.find('View').children().at(3).props().onChangeText("Tester123")
         c.find('View').children().at(4).props().onPress()
     })

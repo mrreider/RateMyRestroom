@@ -14,7 +14,7 @@ export default function LoadingScreen({ navigation }) {
                     navigation.replace('Dashboard')
                 }
                 else {
-                    navigation.replace('Welcome')
+                    navigation.replace('Sign In')
                 }
             })
         }
