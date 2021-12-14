@@ -1,6 +1,6 @@
 import { signInWithCustomToken } from '@firebase/auth';
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Text, TextInput, Picker, Alert } from 'react-native';
+import { Image, View, StyleSheet, Text, TextInput, Picker, Alert } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { getCoordsFromAddress } from '../../apis/api';
@@ -15,10 +15,58 @@ export default function AddMarker({ navigation }) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#d4302a',
+            backgroundColor: '#DEDEDE',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'center'
         },
+      
+        logo_image: {
+          top: "-9%",
+          
+          height: "32%",
+          width: "90%",
+          marginBottom: 40,
+        },
+      
+        main_title_text: {
+          top: "1%",
+      
+          fontSize: 32,
+          fontWeight: "bold",
+          letterSpacing: 3,
+      
+          marginTop: 0,
+          marginLeft: 0,
+          color: "#00072D",
+        },
+      
+      
+        search_button: {
+          top: "8%",
+          
+          width: "100%",
+          height: 40,
+          borderRadius: 40,
+          
+          alignItems: "center",
+          justifyContent: "center",
+          
+          backgroundColor: "#774C60",
+        },
+      
+        search_button_text: {
+          fontSize: 18,
+          fontWeight: "bold",
+          letterSpacing: 2,
+          
+      
+          flex: 1,
+          padding: 10,
+          marginLeft: 0,
+      
+          color: "#00072D",
+        },
+      
         formInput: {
             margin: 15,
             height: 40,
@@ -37,31 +85,15 @@ export default function AddMarker({ navigation }) {
             
             
         },
-        header: {
-            marginTop: 10,
-            fontSize: 25,
-            fontWeight: 'bold',
-            fontFamily: 'Futura',
-            color: "white",
-            height: 100
-        },
-        button1: {
-            fontSize: 20,
-            //fontWeight: 'bold',
-            fontFamily: 'Futura',
-            color: "#007ad1",
-            height: 50,
-            marginTop: 50,
-            marginBottom: 0
-        },
+       
         button2: {
             fontSize: 20,
-            //fontWeight: 'bold',
-            fontFamily: 'Futura',
+            fontWeight: 'bold',
             color: "#007ad1",
             height: 100,
             marginTop: 0,
-            marginBottom: 10
+            marginBottom: 10,
+            color: "#00072D"
         }
 
     })
@@ -102,7 +134,8 @@ export default function AddMarker({ navigation }) {
     // Want to add search box
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Add a Restroom</Text>
+            <Image style={styles.logo_image} source={require("../../assets/logo.png")} />
+            <Text style={styles.main_title_text}>Add a Restroom</Text>
             <TextInput
                 style={styles.formInput}
                 placeholder="Enter address to add restroom"
@@ -117,8 +150,8 @@ export default function AddMarker({ navigation }) {
                     setOpen={setOpen}
                     setValue={setValue}
                 /> : null}
-            <TouchableOpacity onPress={submitSearch}>
-                <Text style={styles.button1}>Search</Text>
+            <TouchableOpacity style={styles.search_button} onPress={submitSearch}>
+                <Text style={styles.search_button_text}>Search</Text>
             </TouchableOpacity>
             {value == null ? null :
                 <TouchableOpacity onPress={submitValidAddress}>

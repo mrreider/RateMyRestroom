@@ -35,21 +35,21 @@ export default function Map({ navigation }) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#d4302a'
+            backgroundColor: '#DEDEDE'
             // justifyContent: 'center',
             // alignItems: 'center',
         },
         footer: {
             margin: 10,
             marginBottom: 37,
-            backgroundColor: '#d4302a'
+            backgroundColor: '#DEDEDE'
         },
         backText: {
             fontSize: 20,
             textAlign: 'center',
-            fontFamily: 'Futura',
+            color: "#00072D"
            //fontWeight: 'bold',
-            color: 'white'
+            
         },
         map: {
             flex: 1
