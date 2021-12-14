@@ -16,7 +16,7 @@ import * as Location from 'expo-location';
 import * as FireStore from 'firebase/firestore'
 import Dashboard from '../components/Dashboard/dashboard'
 import WelcomeScreen from '../components/Welcome/Welcome'
-import {withHooks} from 'jest-react-hooks-shallow'
+
 // import enableHooks from 'jest-react-hooks-shallow';
 import SelectFavorite from '../components/SelectFavorite/SelectFavorite'
 import AddMarker from '../components/AddMarker/AddMarker'
@@ -44,7 +44,6 @@ describe("Tests for API with test account", () => {
             const result = user.exists()
             expect(result).toBe(true)
         } catch (err) {
-            console.log(err.message)
             fail('should not reach here')
         }
         finally {
@@ -73,7 +72,6 @@ describe("Tests for API with test account", () => {
             const result = await API.getCoordsFromAddress("34 silver ridge common")
             expect(result).not.toBe(null)
         } catch (err) {
-            console.log(err.message)
             fail('should not reach here')
         }
     })
@@ -93,7 +91,6 @@ describe("Tests for API with test account", () => {
             expect(result).toBe(true) 
         }
         catch (err) {
-            console.log(err.message)
             fail('should not reach here')
         }
         finally {
@@ -109,7 +106,6 @@ describe("Tests for API with test account", () => {
         try {
             const result = await API.loadMarkers()
         } catch(err) {
-            console.log(err.message)
             fail('code should not reach here')
         }
     })
@@ -127,7 +123,6 @@ describe("Tests for API with test account", () => {
             const favResult = await API.getFavorite()
             expect(favResult).toBe(String(random))
         } catch (err) {
-            console.log(err.message)
             fail('code should not reach here')
         }
 
@@ -138,8 +133,8 @@ describe("Tests for API with test account", () => {
         jest.spyOn(API, "loadMarkers").mockImplementation(() => {
             return [
                 {coordinate: {
-                    latitude: 0,
-                    longitude: 0
+                    lat: 0,
+                    lng: 0
                 },
                 name: "test",
                 rating: "test",
@@ -359,6 +354,7 @@ describe("Tests for API with test account", () => {
 
     test('inner api of add marker', async () => {
         jest.spyOn(API, "getCoordsFromAddress").mockImplementation(val => {
+            if (val == "err") throw 'Exception'
             return {
                 results: [
                     {
@@ -375,6 +371,9 @@ describe("Tests for API with test account", () => {
                 navigate: jest.fn()
             }}
         />)
+        await c.find('View').children().at(2).props().onPress()
+        c.find('View').children().at(1).props().onChangeText("err")
+        await c.find('View').children().at(2).props().onPress()
         c.find('View').children().at(1).props().onChangeText("fakeAddress")
         await c.find('View').children().at(2).props().onPress()
         c.find('View').children().at(2).props().setValue(0)

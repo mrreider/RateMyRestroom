@@ -122,10 +122,6 @@ export default function AddMarker({ navigation }) {
     }
 
     const submitValidAddress = () => {
-        if (value == null) {
-            Alert.alert("Please select an address!")
-            return
-        }
         navigation.navigate('Describe Marker', {
             location: value
         })

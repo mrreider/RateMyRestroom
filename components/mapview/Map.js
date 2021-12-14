@@ -62,7 +62,6 @@ export default function Map({ navigation }) {
 
     async function getUserLocation() {
         let { status } = await Location.requestForegroundPermissionsAsync();
-        console.log(status)
         if (status !== 'granted') {
             return
         }
