@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, TextInput, Alert} from 'react-native'
+import {Image, View, StyleSheet, Text, TextInput, Alert} from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { sendMarkerToDatabase } from '../../apis/api';
@@ -11,49 +11,62 @@ export default function DescribeMarker({route, navigation}) {
     const [open, setOpen] = useState(false)
 
     const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            backgroundColor: '#d4302a',
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
-        formInput: {
-            margin: 15,
-            height: 40,
-            borderColor: '#000',
-            borderWidth: 1,
-            width: '67%',
-            fontFamily: 'Futura',
-            backgroundColor: "white"
-        },
-        header: {
-            fontSize: 25,
-            fontFamily: 'Futura',
-            fontWeight: 'bold',
-            color: "white",
-            marginBottom: 100
-        },
-        dropdown: {
-            width: '67%',
-            justifyContent: 'center',
-            marginStart: '16.4%'
-        },
-        label: {
-            paddingTop: 12
-        },
-        labelRating: {
-            paddingTop: 12,
-            paddingBottom: 12
-        },
-        submitMarker: {
-            fontSize: 20,
-            color: "#007ad1",
-            fontFamily: "Futura"
-            
-            //fontWeight: 'bold'
-        }
-
-    })
+            container: {
+                flex: 1,
+                backgroundColor: '#DEDEDE',
+                alignItems: 'center',
+                justifyContent: 'center'
+            },
+          
+            logo_image: {
+              top: "-9%",
+              
+              height: "32%",
+              width: "90%",
+              marginBottom: 40,
+            },
+          
+            main_title_text: {
+              top: "-10%",
+          
+              fontSize: 23,
+              fontWeight: "bold",
+              letterSpacing: 3,
+          
+              marginTop: 0,
+              marginLeft: 0,
+              color: "#00072D",
+            },
+          
+          
+            button_text: {
+             
+              fontWeight: "bold",
+              letterSpacing: 1.5,
+          
+              color: "#A52A2A",
+            },
+          
+            formInput: {
+                margin: 15,
+                height: 40,
+                borderColor: '#7a42f4',
+                backgroundColor: '#fff',
+                borderWidth: 1,
+                width: '67%',
+                fontFamily: 'Futura',
+                paddingLeft: 10,
+                
+                
+            },
+            dropDown: {
+                
+                fontFamily: 'Futura'
+                
+                
+            }
+    
+        })
 
     const getItems = () => {
         let tempItems = []
@@ -71,7 +84,6 @@ export default function DescribeMarker({route, navigation}) {
             Alert.alert("Please complete all fields")
             return
         }
-        console.log(route.params.location)
         const obToSend = {
             coordinate: route.params.location,
             name: name,
@@ -90,7 +102,8 @@ export default function DescribeMarker({route, navigation}) {
 
     return (
         <View style = {styles.container}>
-            <Text style = {styles.header}>Describe the Restroom</Text>
+            <Image style={styles.logo_image} source={require("../../assets/logo.png")} />
+            <Text style = {styles.main_title_text}>Describe the Restroom</Text>
             
             <TextInput
              style = {styles.formInput}
@@ -116,7 +129,7 @@ export default function DescribeMarker({route, navigation}) {
              onChangeText = {(description) => setDescription(description)}
              />
              <TouchableOpacity onPress = {sendAndAddMarker}>
-                 <Text style = {styles.submitMarker}>Submit Marker</Text>
+                 <Text style = {styles.button_text}>Submit Marker</Text>
              </TouchableOpacity>
         </View>
     )

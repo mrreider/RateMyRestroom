@@ -18,7 +18,6 @@ export async function getFavorite() {
     return snap.data().favorite
   } catch (err) {
     Alert.alert("there is an error", err.message)
-    console.log(err.message)
   }
 }
 
@@ -31,7 +30,6 @@ export async function setFavorite(favorite) {
     return true
   } catch (err) {
     Alert.alert("there is an error", err.message)
-    console.log(err.message)
     return false
   }
 }
@@ -102,7 +100,6 @@ export async function registration(email, password, lastName, firstName) {
     })
   } catch (err) {
     Alert.alert("there is an error", err.message)
-    console.log(err.message)
   }
 }
 
