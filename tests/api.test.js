@@ -266,11 +266,11 @@ describe("Tests for API with test account", () => {
                 navigation = {{
                     navigate: jest.fn()
                 }}/>)
-            await c.find('View').children().at(2).props().onPress()
-            c.find('View').children().at(1).props().setOpen(true)
-            c.find('View').children().at(1).props().setValue(1)
-            c.find('View').children().at(1).props().setItems([])
-            await c.find('View').children().at(2).props().onPress()
+            await c.find('View').children().at(3).props().onPress()
+            c.find('View').children().at(2).props().setOpen(true)
+            c.find('View').children().at(2).props().setValue(1)
+            c.find('View').children().at(2).props().setItems([])
+            await c.find('View').children().at(3).props().onPress()
         // })
         
     })
@@ -292,10 +292,10 @@ describe("Tests for API with test account", () => {
                 navigation = {{
                     navigate: jest.fn()
                 }}/>)
-            c.find('View').children().at(1).props().setOpen(true)
-            c.find('View').children().at(1).props().setValue(1)
-            c.find('View').children().at(1).props().setItems([])
-            await c.find('View').children().at(2).props().onPress()
+            c.find('View').children().at(2).props().setOpen(true)
+            c.find('View').children().at(2).props().setValue(1)
+            c.find('View').children().at(2).props().setItems([])
+            await c.find('View').children().at(3).props().onPress()
         // })
         
     })
@@ -315,13 +315,13 @@ describe("Tests for API with test account", () => {
                 navigation = {{
                     navigate: jest.fn()
                 }}/>)
-            c.find('View').children().at(1).props().setOpen(true)
-            c.find('View').children().at(1).props().setValue(1)
-            c.find('View').children().at(1).props().setItems([{
+            c.find('View').children().at(2).props().setOpen(true)
+            c.find('View').children().at(2).props().setValue(1)
+            c.find('View').children().at(2).props().setItems([{
                 value: 1,
                 label: "test"
             }])
-            await c.find('View').children().at(2).props().onPress()
+            await c.find('View').children().at(3).props().onPress()
         // })
         
     })
@@ -341,13 +341,13 @@ describe("Tests for API with test account", () => {
                 navigation = {{
                     navigate: jest.fn()
                 }}/>)
-            c.find('View').children().at(1).props().setOpen(true)
-            c.find('View').children().at(1).props().setValue(2)
-            c.find('View').children().at(1).props().setItems([{
+            c.find('View').children().at(2).props().setOpen(true)
+            c.find('View').children().at(2).props().setValue(2)
+            c.find('View').children().at(2).props().setItems([{
                 value: 1,
                 label: "test"
             }])
-            await c.find('View').children().at(2).props().onPress()
+            await c.find('View').children().at(3).props().onPress()
         // })
         
     })
@@ -371,13 +371,13 @@ describe("Tests for API with test account", () => {
                 navigate: jest.fn()
             }}
         />)
-        await c.find('View').children().at(2).props().onPress()
-        c.find('View').children().at(1).props().onChangeText("err")
-        await c.find('View').children().at(2).props().onPress()
-        c.find('View').children().at(1).props().onChangeText("fakeAddress")
-        await c.find('View').children().at(2).props().onPress()
-        c.find('View').children().at(2).props().setValue(0)
-        c.find('View').children().at(4).props().onPress()
+        await c.find('View').children().at(3).props().onPress()
+        c.find('View').children().at(2).props().onChangeText("err")
+        await c.find('View').children().at(3).props().onPress()
+        c.find('View').children().at(2).props().onChangeText("fakeAddress")
+        await c.find('View').children().at(3).props().onPress()
+        c.find('View').children().at(3).props().setValue(0)
+        c.find('View').children().at(5).props().onPress()
     })
 
     test('inner api of describe marker 1', async () => {
@@ -392,12 +392,12 @@ describe("Tests for API with test account", () => {
                 }
             }}
         />)
-        await c.find('View').children().at(4).props().onPress()
-        c.find('View').children().at(1).props().onChangeText("name")
-        c.find('View').children().at(2).props().items
-        c.find('View').children().at(2).props().setValue(3)
-        c.find('View').children().at(3).props().onChangeText("Desc")
-        await c.find('View').children().at(4).props().onPress()
+        await c.find('View').children().at(5).props().onPress()
+        c.find('View').children().at(2).props().onChangeText("name")
+        c.find('View').children().at(3).props().items
+        c.find('View').children().at(3).props().setValue(3)
+        c.find('View').children().at(4).props().onChangeText("Desc")
+        await c.find('View').children().at(5).props().onPress()
     })
 
     test('inner api of describe marker 2', async () => {
@@ -412,11 +412,11 @@ describe("Tests for API with test account", () => {
                 }
             }}
         />)
-        c.find('View').children().at(1).props().onChangeText("name")
-        c.find('View').children().at(2).props().items
-        c.find('View').children().at(2).props().setValue(3)
-        c.find('View').children().at(3).props().onChangeText("Desc")
-        await c.find('View').children().at(4).props().onPress()
+        c.find('View').children().at(2).props().onChangeText("name")
+        c.find('View').children().at(3).props().items
+        c.find('View').children().at(3).props().setValue(3)
+        c.find('View').children().at(4).props().onChangeText("Desc")
+        await c.find('View').children().at(5).props().onPress()
     })
 
 

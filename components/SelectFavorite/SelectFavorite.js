@@ -117,10 +117,10 @@ export default function SelectFavorite({ navigation }) {
 
     return (
         <View style={styles.container}>
-             <Image style={styles.logo_image} source={require("../../assets/logo.png")} />
+            <Image style={styles.logo_image} source={require("../../assets/logo.png")} />
             <Text style={styles.main_title_text}>Favorite Restroom</Text>
             <DropDownPicker
-                style={styles.dropdown}
+                style={styles.dropDown}
                 open={open}
                 setOpen={setOpen}
                 items={items}
